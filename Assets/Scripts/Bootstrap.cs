@@ -24,12 +24,11 @@ public class Bootstrap : MonoBehaviour
 
     private void InitializeManagers()
     {
-        // ADD LATER
-        // if (GameManager.Instance == null)
-        //     new GameObject("GameManager").AddComponent<GameManager>();
+        if (GameManager.Instance == null)
+            new GameObject("GameManager").AddComponent<GameManager>();
 
-        // if (InventoryManager.Instance == null)
-        //     new GameObject("InventoryManager").AddComponent<InventoryManager>();
+        if (InventoryManager.Instance == null)
+            new GameObject("InventoryManager").AddComponent<InventoryManager>();
 
         // if (CustomerManager.Instance == null)
         //     new GameObject("CustomerManager").AddComponent<CustomerManager>();
