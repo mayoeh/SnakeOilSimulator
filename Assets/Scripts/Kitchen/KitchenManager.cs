@@ -30,8 +30,16 @@ public class KitchenManager : MonoBehaviour
         ResultData.Instance.lastResult = result != RecipeResult.Bad;
         ResultData.Instance.recipeSubmitted = true;
 
-        // Award coins
-        InventoryManager.Instance.AddCoins(coins);
+        int coinsGot = GetCoins(result);
+
+        // Store coins temporarily for dialogue
+        ResultData.Instance.coinsThisCustomer = coinsGot;
+
+        // Store total in ResultData
+        ResultData.Instance.coinsEarned = coinsGot;
+
+        // Award coins to the inventory here (optional: can also wait until dialogue shows)
+        InventoryManager.Instance.AddCoins(coinsGot);
 
         // Reset stats for next recipe
         ResetStats();
@@ -44,6 +52,20 @@ public class KitchenManager : MonoBehaviour
     {
         float totalDiff = 0f;
         int count = 0;
+        float score = 0;
+
+        // Check for toxicity and intoxication
+        if(currentCustomer.toxicity_max < GameManager.toxicity || currentCustomer.intoxication_max < GameManager.intoxication)
+        {
+            return GetTierFromScore(score);
+        }
+
+        // Check for minimums
+        if(currentCustomer.healing_min > GameManager.healing || currentCustomer.strength_min < GameManager.strength || currentCustomer.luck_min < GameManager.luck || currentCustomer.charm_min < GameManager.charm)
+        {
+            return GetTierFromScore(score);
+
+        }
 
         if (currentCustomer.healing_ideal >= 0)
         {
@@ -67,7 +89,7 @@ public class KitchenManager : MonoBehaviour
         }
 
         float averageDiff = (count > 0) ? totalDiff / count : 0f;
-        float score = Mathf.Clamp(100 - averageDiff * 10f, 0, 100);
+        score = Mathf.Clamp(100 - averageDiff * 10f, 0, 100);
 
         return GetTierFromScore(score);
     }
@@ -119,7 +141,7 @@ public class KitchenManager : MonoBehaviour
             case RecipeResult.Great: return 40;
             case RecipeResult.Good: return 25;
             case RecipeResult.Okay: return 15;
-            case RecipeResult.Bad: return 5;
+            case RecipeResult.Bad: return 1;
             default: return 0;
         }
     }

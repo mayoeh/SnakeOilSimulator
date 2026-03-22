@@ -4,17 +4,18 @@ using UnityEngine.InputSystem;
 
 public class DialogueManager : MonoBehaviour
 {
+    [Header("UI References")]
     public TMP_Text dialogueText;
     public TMP_Text speakerText;
 
-    public enum DialogueState { Intro, Needs, Result, Finished }
-    public DialogueState currentState;
-    private int resultLineIndex = 0;
-    private string[] currentResultLines;
-    private PlayerInputActions inputActions;
-    public bool recipeSubmitted = false;
+    public enum DialogueState { Intro, Needs, Result }
+    private DialogueState currentState;
 
-    bool resultCoinsGiven = false;
+    private string[] currentResultLines;
+    private int resultLineIndex = 0;
+    private bool coinsAwarded = false;
+
+    private PlayerInputActions inputActions;
 
     void Awake()
     {
@@ -23,10 +24,23 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        Customer current = CustomerManager.Instance.currentCustomer;
+        var stage = ResultData.Instance.dialogueStage;
+        var customer = CustomerManager.Instance.currentCustomer;
 
-        // Always show intro first
-        ShowIntro();
+        // Determine initial state based on saved dialogue stage
+        switch (stage)
+        {
+            case DialogueStage.NotStarted:
+                ShowIntro();
+                break;
+            case DialogueStage.IntroShown:
+            case DialogueStage.NeedsShown:
+                ShowNeeds();
+                break;
+            case DialogueStage.ResultShown:
+                ShowResult();
+                break;
+        }
     }
 
     void OnEnable()
@@ -48,23 +62,25 @@ public class DialogueManager : MonoBehaviour
 
     public void AdvanceDialogue()
     {
-        Customer c = CustomerManager.Instance.currentCustomer;
+        var customer = CustomerManager.Instance.currentCustomer;
 
         switch (currentState)
         {
             case DialogueState.Intro:
                 ShowNeeds();
+                ResultData.Instance.dialogueStage = DialogueStage.IntroShown;
                 break;
 
             case DialogueState.Needs:
                 if (ResultData.Instance.recipeSubmitted)
                 {
                     ShowResult();
+                    ResultData.Instance.dialogueStage = DialogueStage.ResultShown;
                 }
                 else
                 {
-                    dialogueText.text = "You need to submit a recipe first!";
-                    // Stay in Needs state until submission
+                    dialogueText.text = "Go to the kitchen to make a recipe to submit!";
+                    ResultData.Instance.dialogueStage = DialogueStage.NeedsShown;
                 }
                 break;
 
@@ -76,8 +92,9 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
+                    // Finished result lines → next customer
                     CustomerManager.Instance.NextCustomer();
-                    ResetResultData();
+                    ResetForNextCustomer();
                     ShowIntro();
                 }
                 break;
@@ -86,65 +103,76 @@ public class DialogueManager : MonoBehaviour
 
     public void ShowIntro()
     {
-        dialogueText.text = CustomerManager.Instance.currentCustomer.intro;
-        speakerText.text = CustomerManager.Instance.currentCustomer.name;
+        var customer = CustomerManager.Instance.currentCustomer;
 
+        dialogueText.text = customer.intro;
+        speakerText.text = customer.name;
         currentState = DialogueState.Intro;
-        resultCoinsGiven = false;
+        coinsAwarded = false;
     }
 
     public void ShowNeeds()
     {
-        dialogueText.text = CustomerManager.Instance.currentCustomer.needs;
-        speakerText.text = CustomerManager.Instance.currentCustomer.name;
+        var customer = CustomerManager.Instance.currentCustomer;
+
+        dialogueText.text = customer.needs;
+        speakerText.text = customer.name;
         currentState = DialogueState.Needs;
     }
 
     public void ShowResult()
     {
-        var c = CustomerManager.Instance.currentCustomer;
-        speakerText.text = c.name;
+        var customer = CustomerManager.Instance.currentCustomer;
+        speakerText.text = customer.name;
 
-        // Pick dialogue lines based on ResultData.resultTier
+        // Select the correct dialogue array from JSON based on ResultData
         switch (ResultData.Instance.resultTier)
         {
             case RecipeResult.Perfect:
-                currentResultLines = c.reaction_perfect;
+                currentResultLines = customer.reaction_perfect;
                 break;
             case RecipeResult.Great:
-                currentResultLines = c.reaction_great;
+                currentResultLines = customer.reaction_great;
                 break;
             case RecipeResult.Good:
-                currentResultLines = c.reaction_good;
+                currentResultLines = customer.reaction_good;
                 break;
             case RecipeResult.Okay:
-                currentResultLines = c.reaction_okay;
+                currentResultLines = customer.reaction_okay;
                 break;
             case RecipeResult.Bad:
-                currentResultLines = c.reaction_bad;
+                currentResultLines = customer.reaction_bad;
                 break;
             default:
                 currentResultLines = new string[] { "..." };
                 break;
         }
 
+        string coinLine = $"You earned {ResultData.Instance.coinsThisCustomer} coins!";
+        string[] newResultLines = new string[currentResultLines.Length + 1];
+        newResultLines[0] = coinLine;
+        for (int i = 0; i < currentResultLines.Length; i++)
+        {
+            newResultLines[i + 1] = currentResultLines[i];
+        }
+        currentResultLines = newResultLines;
+
         resultLineIndex = 0;
         dialogueText.text = currentResultLines[resultLineIndex];
 
-        if (!resultCoinsGiven)
+        // Award coins once
+        if (!coinsAwarded)
         {
-            InventoryManager.Instance.AddCoins(ResultData.Instance.coinsEarned);
-            resultCoinsGiven = true;
+            InventoryManager.Instance.AddCoins(ResultData.Instance.coinsThisCustomer);
+            coinsAwarded = true;
         }
 
         currentState = DialogueState.Result;
     }
 
-    private void ResetResultData()
+    private void ResetForNextCustomer()
     {
-        if (ResultData.Instance != null)
-        {
-            ResultData.Instance.Reset(); // Calls Reset() in ResultData
-        }
+        ResultData.Instance.ResetForNextCustomer();
+        coinsAwarded = false;
     }
 }

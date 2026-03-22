@@ -1,5 +1,13 @@
 using UnityEngine;
 
+public enum DialogueStage
+{
+    NotStarted,    // Nothing shown yet
+    IntroShown,    // Intro line has been shown
+    NeedsShown,    // Needs/warning line shown before submission
+    ResultShown    // Result dialogue has been shown
+}
+
 public enum RecipeResult
 {
     Perfect,
@@ -15,20 +23,23 @@ public class ResultData : MonoBehaviour
 
     [Header("Recipe Submission")]
     public bool recipeSubmitted = false;
+    public RecipeResult resultTier;
+    public float lastScore = 0f;
+    public int coinsEarned = 0;
+    public bool lastResult = false;
 
-    [Header("Result Info")]
-    public RecipeResult resultTier; // Tier of the recipe
-    public float lastScore = 0f; // Raw score out of 100
-    public int coinsEarned = 0; // Coins earned from this recipe
-    public string dialogue = ""; // Optional dialogue line (for temporary storage)
-    public bool lastResult = false; // True if not Bad, false if Bad
+    [Header("Dialogue Tracking")]
+    public DialogueStage dialogueStage = DialogueStage.NotStarted;
+
+    [Header("Temporary Per-Customer Coins")]
+    public int coinsThisCustomer = 0;
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Persist across scenes
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -36,13 +47,14 @@ public class ResultData : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void ResetForNextCustomer()
     {
         recipeSubmitted = false;
         resultTier = RecipeResult.Okay;
         lastScore = 0f;
         coinsEarned = 0;
-        dialogue = "";
+        coinsThisCustomer = 0;
         lastResult = false;
+        dialogueStage = DialogueStage.NotStarted;
     }
 }
