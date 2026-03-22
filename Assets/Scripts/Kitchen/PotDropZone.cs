@@ -3,17 +3,22 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
 using Unity.VisualScripting;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class PotDropZone : MonoBehaviour, IDropHandler
 {
     public ItemData currentItem;
     public int totalIngredients;
     public GameObject warning;
+    public GameObject invWarning;
     public float activeDuration = 3.0f;
+    public GameObject fill;
 
     void Awake()
     {
         warning.SetActive(false);
+        invWarning.SetActive(false);
+        fill.SetActive(false);
     }
 
     public void ActivateForDuration()
@@ -30,11 +35,26 @@ public class PotDropZone : MonoBehaviour, IDropHandler
         warning.SetActive(false);
     }
 
+    public void ActivateForDuration2()
+    {
+        StartCoroutine(ToggleObjectRoutine2());
+    }
+
+    private IEnumerator ToggleObjectRoutine2()
+    {
+        invWarning.SetActive(true);
+
+        yield return new WaitForSeconds(activeDuration);
+
+        invWarning.SetActive(false);
+    }
+
 
     public void OnDrop(PointerEventData eventData)
     {
         if (totalIngredients <= 2)
         {
+            fill.SetActive(true);
             Draggable ingredient = eventData.pointerDrag?.GetComponent<Draggable>();
             currentItem = ingredient.item;
             if (ingredient != null && InventoryManager.Instance.GetItemCount(currentItem) >= 1)
@@ -49,6 +69,7 @@ public class PotDropZone : MonoBehaviour, IDropHandler
                 totalIngredients += 1;
             } else
             {
+                ActivateForDuration2();
                 Debug.Log("You don't have any more ingredients!");
             }
         } else
@@ -63,5 +84,6 @@ public class PotDropZone : MonoBehaviour, IDropHandler
     {
         currentItem = null;
         totalIngredients = 0;
+        fill.SetActive(false);
     }
 }
