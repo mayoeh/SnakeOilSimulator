@@ -125,38 +125,32 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = customer.name;
         UpdatePortrait();
 
-        // Select the correct dialogue array from JSON based on ResultData
+        // 1Get the correct tier lines from JSON
+        string[] tierLines;
         switch (ResultData.Instance.resultTier)
         {
-            case RecipeResult.Perfect:
-                currentResultLines = customer.reaction_perfect;
-                break;
-            case RecipeResult.Great:
-                currentResultLines = customer.reaction_great;
-                break;
-            case RecipeResult.Good:
-                currentResultLines = customer.reaction_good;
-                break;
-            case RecipeResult.Okay:
-                currentResultLines = customer.reaction_okay;
-                break;
-            case RecipeResult.Bad:
-                currentResultLines = customer.reaction_bad;
-                break;
-            default:
-                currentResultLines = new string[] { "..." };
-                break;
+            case RecipeResult.Perfect: tierLines = customer.reaction_perfect; break;
+            case RecipeResult.Great:    tierLines = customer.reaction_great;    break;
+            case RecipeResult.Good:     tierLines = customer.reaction_good;     break;
+            case RecipeResult.Okay:     tierLines = customer.reaction_okay;     break;
+            case RecipeResult.Bad:      tierLines = customer.reaction_bad;      break;
+            default:                    tierLines = new string[] { "..." };    break;
         }
 
-        string coinLine = $"You earned {ResultData.Instance.coinsEarned} coins!";        
-        string[] newResultLines = new string[currentResultLines.Length + 1];
-        newResultLines[0] = coinLine;
-        for (int i = 0; i < currentResultLines.Length; i++)
-        {
-            newResultLines[i + 1] = currentResultLines[i];
-        }
-        currentResultLines = newResultLines;
+        // Add subtle feedback about stats (you need to generate this in KitchenManager)
+        string feedback = ResultData.Instance.feedback ?? "Hmm… interesting mixture.";
+        
+        // Add coins line
+        string coinLine = $"You earned {ResultData.Instance.coinsEarned} coins!";
 
+        // Combine everything
+        currentResultLines = new string[2 + tierLines.Length];
+        currentResultLines[0] = coinLine;       // Coins first
+        currentResultLines[1] = feedback;       // Feedback second
+        for (int i = 0; i < tierLines.Length; i++)
+            currentResultLines[i + 2] = tierLines[i]; // Tiered dialogue after
+
+        // Initialize dialogue
         resultLineIndex = 0;
         dialogueText.text = currentResultLines[resultLineIndex];
 

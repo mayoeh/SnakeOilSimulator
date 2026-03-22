@@ -27,6 +27,7 @@ public class ResultData : MonoBehaviour
     public float lastScore = 0f;
     public int coinsEarned = 0;
     public bool lastResult = false;
+    public string feedback;
 
     [Header("Dialogue Tracking")]
     public DialogueStage dialogueStage = DialogueStage.NotStarted;
