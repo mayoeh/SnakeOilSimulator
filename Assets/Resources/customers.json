@@ -170,7 +170,7 @@
     },
     {
       "name": "Eagle-eyed Annie",
-      "intro": "Howdy! You've seen a cowboy around this part with a buzz cut? Watch out for that sneaky fella- he's tryin' to take my job! If he's thinkin' that those desert bandits are the worst thang he's encounterin'... he doesn't know whose he messin' with.",4
+      "intro": "Howdy! You've seen a cowboy around this part with a buzz cut? Watch out for that sneaky fella- he's tryin' to take my job! If he's thinkin' that those desert bandits are the worst thang he's encounterin'... he doesn't know whose he messin' with.",
       "needs": "Before I can start chasin' that bugger, my horse just needs some fixin'. Can you believe it? She got herself bitten by a rattlesnake. But it's alrighty! You can fix it, and I'll be right back on that road!",
       "reaction_good": "Thanky, thanky.",
       "reaction_bad": ".",
