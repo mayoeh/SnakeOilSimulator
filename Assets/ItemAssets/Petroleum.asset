@@ -16,7 +16,7 @@ MonoBehaviour:
   description: "A thick, glossy substance often used to bind mixtures together. While
     not powerful on its own, it\u2019s valued for its reliable properties."
   price: 8
-  image: {fileID: 0}
+  image: {fileID: -8434427892903500002, guid: 3226fe02236522942b2353e50cfc19dd, type: 3}
   healingVal: 1
   strengthVal: 0
   toxicityVal: 0
