@@ -148,7 +148,7 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
 
-        string coinLine = $"You earned {ResultData.Instance.coinsThisCustomer} coins";
+        string coinLine = $"You earned {ResultData.Instance.coinsEarned} coins!";        
         string[] newResultLines = new string[currentResultLines.Length + 1];
         newResultLines[0] = coinLine;
         for (int i = 0; i < currentResultLines.Length; i++)

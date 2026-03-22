@@ -17,81 +17,29 @@ public class KitchenManager : MonoBehaviour
 
     public void SubmitRecipe()
     {
-        // Evaluate the recipe
-        RecipeResult result = EvaluateRecipe();
+        // Calculate score based on proximity to ideal
+        float score = CalculateScore();
 
-        // Determine coins
-        int coins = GetCoins(result);
+        // Determine tier for dialogue
+        RecipeResult tier = GetTierFromScore(score);
 
-        // Store results in ResultData
-        ResultData.Instance.lastScore = CalculateScore();
+        // Determine coins from score with some variation
+        int coins = CalculateCoins(score);
+
+        ResultData.Instance.lastScore = score;
+        ResultData.Instance.resultTier = tier;
         ResultData.Instance.coinsEarned = coins;
-        ResultData.Instance.resultTier = result;
-        ResultData.Instance.lastResult = result != RecipeResult.Bad;
+        ResultData.Instance.lastResult = tier != RecipeResult.Bad;
         ResultData.Instance.recipeSubmitted = true;
 
-        int coinsGot = GetCoins(result);
-
-        // Store coins temporarily for dialogue
-        ResultData.Instance.coinsThisCustomer = coinsGot;
-
-        // Store total in ResultData
-        ResultData.Instance.coinsEarned = coinsGot;
-
-        // Award coins to the inventory here (optional: can also wait until dialogue shows)
-        InventoryManager.Instance.AddCoins(coinsGot);
+        // Award coins
+        InventoryManager.Instance.AddCoins(coins);
 
         // Reset stats for next recipe
         ResetStats();
 
         // Load Customer scene to show results
         SceneManager.LoadScene("Customer");
-    }
-
-    private RecipeResult EvaluateRecipe()
-    {
-        float totalDiff = 0f;
-        int count = 0;
-        float score = 0;
-
-        // Check for toxicity and intoxication
-        if(currentCustomer.toxicity_max < GameManager.toxicity || currentCustomer.intoxication_max < GameManager.intoxication)
-        {
-            return GetTierFromScore(score);
-        }
-
-        // Check for minimums
-        if(currentCustomer.healing_min > GameManager.healing || currentCustomer.strength_min < GameManager.strength || currentCustomer.luck_min < GameManager.luck || currentCustomer.charm_min < GameManager.charm)
-        {
-            return GetTierFromScore(score);
-
-        }
-
-        if (currentCustomer.healing_ideal >= 0)
-        {
-            totalDiff += Mathf.Abs(currentCustomer.healing_ideal - GameManager.healing);
-            count++;
-        }
-        if (currentCustomer.strength_ideal >= 0)
-        {
-            totalDiff += Mathf.Abs(currentCustomer.strength_ideal - GameManager.strength);
-            count++;
-        }
-        if (currentCustomer.luck_ideal >= 0)
-        {
-            totalDiff += Mathf.Abs(currentCustomer.luck_ideal - GameManager.luck);
-            count++;
-        }
-        if (currentCustomer.charm_ideal >= 0)
-        {
-            totalDiff += Mathf.Abs(currentCustomer.charm_ideal - GameManager.charm);
-            count++;
-        }
-
-        float averageDiff = (count > 0) ? totalDiff / count : 0f;
-        score = Mathf.Clamp(100 - averageDiff * 10f, 0, 100);
-
-        return GetTierFromScore(score);
     }
 
     private float CalculateScore()
@@ -120,8 +68,13 @@ public class KitchenManager : MonoBehaviour
             count++;
         }
 
-        float averageDiff = (count > 0) ? totalDiff / count : 0f;
-        return Mathf.Clamp(100 - averageDiff * 10f, 0, 100);
+        float avgDiff = (count > 0) ? totalDiff / count : 0f;
+
+        // Base score out of 100
+        float score = 100 - avgDiff * 10f;
+
+        // Clamp to 0–100
+        return Mathf.Clamp(score, 0, 100);
     }
 
     private RecipeResult GetTierFromScore(float score)
@@ -133,19 +86,11 @@ public class KitchenManager : MonoBehaviour
         return RecipeResult.Bad;
     }
 
-    private int GetCoins(RecipeResult result)
+    private int CalculateCoins(float score)
     {
-        switch (result)
-        {
-            case RecipeResult.Perfect: return 50;
-            case RecipeResult.Great: return 40;
-            case RecipeResult.Good: return 25;
-            case RecipeResult.Okay: return 15;
-            case RecipeResult.Bad: return 1;
-            default: return 0;
-        }
+        // Score rounded plus 0–5 random bonus
+        return Mathf.RoundToInt(score) + Random.Range(0, 6);
     }
-
     private void ResetStats()
     {
         GameManager.healing = 0;
