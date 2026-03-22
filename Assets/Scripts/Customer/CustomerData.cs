@@ -1,3 +1,5 @@
+using UnityEngine;
+
 [System.Serializable]
 public class Customer
 {
@@ -22,6 +24,8 @@ public class Customer
     public int luck_ideal;
     public int charm_ideal;
     public string[] perfect_ingredients;
+    public Sprite portrait;
+    public string portraitName;
 }
 
 [System.Serializable]

@@ -1,12 +1,14 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
     [Header("UI References")]
     public TMP_Text dialogueText;
     public TMP_Text speakerText;
+    public Image portraitImage; 
 
     public enum DialogueState { Intro, Needs, Result }
     private DialogueState currentState;
@@ -107,6 +109,7 @@ public class DialogueManager : MonoBehaviour
 
         dialogueText.text = customer.intro;
         speakerText.text = customer.name;
+        UpdatePortrait();
         currentState = DialogueState.Intro;
         coinsAwarded = false;
     }
@@ -116,6 +119,7 @@ public class DialogueManager : MonoBehaviour
         var customer = CustomerManager.Instance.currentCustomer;
 
         dialogueText.text = customer.needs;
+        UpdatePortrait();
         speakerText.text = customer.name;
         currentState = DialogueState.Needs;
     }
@@ -124,6 +128,7 @@ public class DialogueManager : MonoBehaviour
     {
         var customer = CustomerManager.Instance.currentCustomer;
         speakerText.text = customer.name;
+        UpdatePortrait();
 
         // Select the correct dialogue array from JSON based on ResultData
         switch (ResultData.Instance.resultTier)
@@ -148,7 +153,7 @@ public class DialogueManager : MonoBehaviour
                 break;
         }
 
-        string coinLine = $"You earned {ResultData.Instance.coinsThisCustomer} coins!";
+        string coinLine = $"You earned {ResultData.Instance.coinsThisCustomer} coins";
         string[] newResultLines = new string[currentResultLines.Length + 1];
         newResultLines[0] = coinLine;
         for (int i = 0; i < currentResultLines.Length; i++)
@@ -174,5 +179,17 @@ public class DialogueManager : MonoBehaviour
     {
         ResultData.Instance.ResetForNextCustomer();
         coinsAwarded = false;
+    }
+
+    void UpdatePortrait()
+    {
+        var customer = CustomerManager.Instance.currentCustomer;
+
+        Sprite portrait = Resources.Load<Sprite>($"Portraits/{customer.portraitName}");
+
+        if (portrait != null)
+        {
+            portraitImage.sprite = portrait;
+        }
     }
 }
