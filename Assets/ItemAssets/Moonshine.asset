@@ -10,16 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42f069a5acb7a4f49bb9093e251253f9, type: 3}
-  m_Name: Bottle1
+  m_Name: Moonshine
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemName: Bottle1
-  description: This bottle is just 11 in toxicity to test that the toxicity outweighs
-    the other good metrics
-  price: 1
-  image: {fileID: -6951573431214915834, guid: fb24f5f3a02ee75488bc4a0f804694d4, type: 3}
+  itemName: Moonshine
+  description: 
+  price: 21
+  image: {fileID: 0}
   healingVal: 3
-  strengthVal: 7
-  toxicityVal: 11
-  intoxicationVal: 3
-  luckVal: 10
-  charmVal: 10
+  strengthVal: 4
+  toxicityVal: 5
+  intoxicationVal: 5
+  luckVal: 0
+  charmVal: 3
