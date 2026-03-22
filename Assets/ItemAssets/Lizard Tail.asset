@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f069a5acb7a4f49bb9093e251253f9, type: 3}
+  m_Name: Lizard Tail
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemName: Lizard Tail
+  description: "Lost tail from a lizard - no lizards harmed. Seems like a remedy
+    used in eastern medicine\u2026"
+  price: 15
+  image: {fileID: -1872741190898870799, guid: 427bf3cb6da45e049800a21973c14cb5, type: 3}
+  healingVal: 4
+  strengthVal: 0
+  toxicityVal: 1
+  intoxicationVal: 2
+  luckVal: 1
+  charmVal: 0
