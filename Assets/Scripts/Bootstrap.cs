@@ -30,7 +30,7 @@ public class Bootstrap : MonoBehaviour
         if (InventoryManager.Instance == null)
             new GameObject("InventoryManager").AddComponent<InventoryManager>();
 
-        // if (CustomerManager.Instance == null)
-        //     new GameObject("CustomerManager").AddComponent<CustomerManager>();
+        if (CustomerManager.Instance == null)
+            new GameObject("CustomerManager").AddComponent<CustomerManager>();
     }
 }

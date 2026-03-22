@@ -320,7 +320,6 @@ GameObject:
   - component: {fileID: 164089818}
   - component: {fileID: 164089817}
   - component: {fileID: 164089816}
-  - component: {fileID: 164089819}
   m_Layer: 5
   m_Name: CustomerButton
   m_TagString: Untagged
@@ -392,9 +391,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 164089819}
-        m_TargetAssemblyTypeName: LocationChange, Assembly-CSharp
-        m_MethodName: changeScene
+      - m_Target: {fileID: 274738508}
+        m_TargetAssemblyTypeName: KitchenUI, Assembly-CSharp
+        m_MethodName: OnBackClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -442,20 +441,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164089814}
   m_CullTransparentMesh: 1
---- !u!114 &164089819
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164089814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32177dcaaeff8dc4a9ffb6f6d234f550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocationChange
-  sceneName: Customer
-  currentState: 2
 --- !u!1 &236519055
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,6 +737,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 274738507}
+  - component: {fileID: 274738508}
   m_Layer: 0
   m_Name: KitchenUI
   m_TagString: Untagged
@@ -774,6 +760,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 991968879}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &274738508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274738506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27cceaa91db0b5648b23af5a3d76a10f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KitchenUI
+  kitchenManager: {fileID: 939517737}
 --- !u!1 &309295589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,6 +1223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 939517736}
+  - component: {fileID: 939517737}
   m_Layer: 0
   m_Name: KitchenManager
   m_TagString: Untagged
@@ -1246,6 +1246,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &939517737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939517735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25cd616366a54f4e8777c65d5495c68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KitchenManager
+  score: 0
+  currentCustomer:
+    name: 
+    intro: 
+    needs: 
+    reaction_good: []
+    reaction_bad: []
+    healing_min: 0
+    strength_min: 0
+    toxicity_max: 0
+    intoxication_max: 0
+    luck_min: 0
+    charm_min: 0
+    healing_ideal: 0
+    strength_ideal: 0
+    luck_ideal: 0
+    charm_ideal: 0
+    perfect_ingredients: []
+  playerIngredients: []
 --- !u!1 &991968875
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,14 +1372,14 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 274738507}
   - {fileID: 236519056}
   - {fileID: 164089815}
   - {fileID: 1467056278}
   - {fileID: 1445077879}
-  - {fileID: 274738507}
   - {fileID: 1796053106}
-  - {fileID: 76230346}
   - {fileID: 1938381012}
+  - {fileID: 76230346}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1471,7 +1502,6 @@ GameObject:
   - component: {fileID: 1467056281}
   - component: {fileID: 1467056280}
   - component: {fileID: 1467056279}
-  - component: {fileID: 1467056282}
   m_Layer: 5
   m_Name: SubmitButton
   m_TagString: Untagged
@@ -1543,9 +1573,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1467056282}
-        m_TargetAssemblyTypeName: LocationChange, Assembly-CSharp
-        m_MethodName: changeScene
+      - m_Target: {fileID: 274738508}
+        m_TargetAssemblyTypeName: KitchenUI, Assembly-CSharp
+        m_MethodName: OnSubmitClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1593,20 +1623,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1467056277}
   m_CullTransparentMesh: 1
---- !u!114 &1467056282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1467056277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32177dcaaeff8dc4a9ffb6f6d234f550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocationChange
-  sceneName: Customer
-  currentState: 3
 --- !u!1 &1482136984
 GameObject:
   m_ObjectHideFlags: 0

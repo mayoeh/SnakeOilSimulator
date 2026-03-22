@@ -119,6 +119,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &257611513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257611515}
+  - component: {fileID: 257611514}
+  m_Layer: 0
+  m_Name: CustomerSceneController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &257611514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257611513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7bb5a84c3f9c124b9d42a9a03381a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerSceneController
+  dialogueManager: {fileID: 1056087733}
+--- !u!4 &257611515
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257611513}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 308.438, y: 369.4875, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &396863431
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,12 +333,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1476013923}
   - {fileID: 1077600977}
+  - {fileID: 1582823437}
   - {fileID: 1788341798}
   - {fileID: 396863432}
-  - {fileID: 1010567985}
   - {fileID: 1056087730}
-  - {fileID: 1582823437}
+  - {fileID: 1010567985}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -449,6 +495,7 @@ GameObject:
   - component: {fileID: 1056087730}
   - component: {fileID: 1056087732}
   - component: {fileID: 1056087731}
+  - component: {fileID: 1056087733}
   m_Layer: 5
   m_Name: DialogueText
   m_TagString: Untagged
@@ -575,6 +622,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1056087729}
   m_CullTransparentMesh: 1
+--- !u!114 &1056087733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1056087729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b047ee4d214aa14a937e018ab318632, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueManager
+  dialogueText: {fileID: 1056087731}
+  speakerText: {fileID: 1010567986}
+  currentState: 0
 --- !u!1 &1077600976
 GameObject:
   m_ObjectHideFlags: 0
@@ -742,6 +804,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1476013921
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1476013923}
+  - component: {fileID: 1476013922}
+  m_Layer: 0
+  m_Name: CustomerUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1476013922
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476013921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b94d4a7a941639848a29f5c28e2846c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CustomerUI
+--- !u!4 &1476013923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1476013921}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -91.56201, y: 69.48749, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 905512596}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1582823436
 GameObject:
   m_ObjectHideFlags: 0
@@ -754,7 +860,6 @@ GameObject:
   - component: {fileID: 1582823440}
   - component: {fileID: 1582823439}
   - component: {fileID: 1582823438}
-  - component: {fileID: 1582823441}
   m_Layer: 5
   m_Name: KitchenButton
   m_TagString: Untagged
@@ -826,9 +931,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1582823441}
-        m_TargetAssemblyTypeName: LocationChange, Assembly-CSharp
-        m_MethodName: changeScene
+      - m_Target: {fileID: 1476013922}
+        m_TargetAssemblyTypeName: CustomerUI, Assembly-CSharp
+        m_MethodName: OnGoToKitchen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -876,20 +981,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582823436}
   m_CullTransparentMesh: 1
---- !u!114 &1582823441
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1582823436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32177dcaaeff8dc4a9ffb6f6d234f550, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LocationChange
-  sceneName: Kitchen
-  currentState: 0
 --- !u!1 &1788341797
 GameObject:
   m_ObjectHideFlags: 0
@@ -1188,3 +1279,4 @@ SceneRoots:
   - {fileID: 1202468714}
   - {fileID: 905512596}
   - {fileID: 1907049326}
+  - {fileID: 257611515}

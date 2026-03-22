@@ -1,0 +1,51 @@
+{
+  "customers": [
+    {
+      "name": "Sheriff",
+      "intro": "Introduction line here",
+      "needs": "I need...",
+      "reaction_good": ["That's exactly what I needed.", "Thanks Partner"],
+      "reaction_bad": ["This is very bad.", ":("],
+      "healing_min": 1,
+      "toxicity_max": 10,
+      "intoxication_max": 10,
+      "luck_min": 3,
+      "healing_ideal": 3,
+      "luck_ideal": 4
+    },
+    {
+      "name": "Customer2",
+      "intro": "Introduction line 2 here",
+      "needs": "I need...",
+      "reaction_good": ["That's exactly what I needed.", "Thanks Partner"],
+      "reaction_bad": ["This is very bad.", ":("],
+      "healing_min": 3,
+      "strength_min": 2,
+      "toxicity_max": 10,
+      "intoxication_max": 10,
+      "luck_min": 0,
+      "charm_min":0,
+      "healing_ideal": 5,
+      "strength_ideal": 3,
+      "luck_ideal": 1,
+      "charm_ideal": 0
+    },
+    {
+      "name": "Customer3",
+      "intro": "Introduction line 3 here",
+      "needs": "I need...",
+      "reaction_good": ["That's exactly what I needed.", "Thanks Partner"],
+      "reaction_bad": ["This is very bad.", ":("],
+      "healing_min": 3,
+      "strength_min": 2,
+      "toxicity_max": 10,
+      "intoxication_max": 10,
+      "luck_min": 0,
+      "charm_min":0,
+      "healing_ideal": 5,
+      "strength_ideal": 3,
+      "luck_ideal": 1,
+      "charm_ideal": 0
+    }
+  ]
+}
