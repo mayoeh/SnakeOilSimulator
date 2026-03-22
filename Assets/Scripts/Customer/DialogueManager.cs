@@ -15,7 +15,6 @@ public class DialogueManager : MonoBehaviour
 
     private string[] currentResultLines;
     private int resultLineIndex = 0;
-    private bool coinsAwarded = false;
 
     private PlayerInputActions inputActions;
 
@@ -27,9 +26,7 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         var stage = ResultData.Instance.dialogueStage;
-        var customer = CustomerManager.Instance.currentCustomer;
 
-        // Determine initial state based on saved dialogue stage
         switch (stage)
         {
             case DialogueStage.NotStarted:
@@ -81,7 +78,8 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
-                    dialogueText.text = "Go to the kitchen to make a recipe to submit!";
+                    ShowNeeds();
+                    //dialogueText.text = "Go to the kitchen to make a recipe to submit!";
                     ResultData.Instance.dialogueStage = DialogueStage.NeedsShown;
                 }
                 break;
@@ -94,10 +92,8 @@ public class DialogueManager : MonoBehaviour
                 }
                 else
                 {
-                    // Finished result lines → next customer
-                    CustomerManager.Instance.NextCustomer();
+                    GameManager.Instance.OnCustomerFinished();
                     ResetForNextCustomer();
-                    ShowIntro();
                 }
                 break;
         }
@@ -111,7 +107,6 @@ public class DialogueManager : MonoBehaviour
         speakerText.text = customer.name;
         UpdatePortrait();
         currentState = DialogueState.Intro;
-        coinsAwarded = false;
     }
 
     public void ShowNeeds()
@@ -165,20 +160,12 @@ public class DialogueManager : MonoBehaviour
         resultLineIndex = 0;
         dialogueText.text = currentResultLines[resultLineIndex];
 
-        // Award coins once
-        if (!coinsAwarded)
-        {
-            InventoryManager.Instance.AddCoins(ResultData.Instance.coinsThisCustomer);
-            coinsAwarded = true;
-        }
-
         currentState = DialogueState.Result;
     }
 
     private void ResetForNextCustomer()
     {
         ResultData.Instance.ResetForNextCustomer();
-        coinsAwarded = false;
     }
 
     void UpdatePortrait()

@@ -5,6 +5,13 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    public int currentDay = 1;
+    public int customersServedToday = 0;
+
+    public int maxDays = 3;
+    public int customersPerDay = 3;
+
     public GameState currentState;
     public static int healing = 0;
     public static int strength = 0;
@@ -47,6 +54,47 @@ public class GameManager : MonoBehaviour
 
         currentState = GameState.Result;
         SceneManager.LoadScene("Customer");
+    }
+
+    public void OnCustomerFinished()
+    {
+        customersServedToday++;
+
+        CustomerManager.Instance.NextCustomer();
+
+        if (customersServedToday >= customersPerDay)
+        {
+            EndDay();
+        }
+        else
+        {
+            GoToCustomer(); // next customer
+        }
+    }
+
+    void EndDay()
+    {
+        if (currentDay >= maxDays)
+        {
+            EndGame();
+        }
+        else
+        {
+            SceneManager.LoadScene("Shop");
+        }
+    }
+
+    public void StartNextDay()
+    {
+        currentDay++;
+        customersServedToday = 0;
+    }
+
+    void EndGame()
+    {
+        Debug.Log("Game Complete!");
+        // Load ending scene if you want
+        // SceneManager.LoadScene("EndScene");
     }
 
 }

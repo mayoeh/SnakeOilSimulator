@@ -16,4 +16,10 @@ public class LocationChange : MonoBehaviour
         currentState = GameState.Needs;
         SceneManager.LoadScene("Customer");
     }
+
+    public void OnContinueButton()
+    {
+        GameManager.Instance.StartNextDay();
+        GameManager.Instance.GoToCustomer();
+    }
 }
