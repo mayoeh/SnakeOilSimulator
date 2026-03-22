@@ -2,6 +2,7 @@
   "customers": [
     {
       "name": "Sheriff",
+      "portraitName": "sherrifShaded",
       "intro": "Good day, sir. Mighty fine weather we're having, huh? Haven't seen your shop around this part of town. Are you new? No... wait. Could have sworn I've seen your face somewhere before... Were you the one that had your wedding last weekend?",
       "needs": "Anyways, there's been some small minnows swimming about, causing mischief. Say, give old John something that'll allow these arms to beat some sense into those youngins, won't ya?",
       "reaction_perfect": ["That's my man! I'll see you around town, then."],
@@ -22,6 +23,7 @@
     },
     {
       "name": "Gambler",
+      "portraitName": "prospectorShaded",
       "intro": "Oi mate! Some interesting shop you're running around here, mate. I'm about to head to the saloon soon, mate. You know, the place with the money, mate?",
       "needs": "Oi! My fortunes have been down lately, mate. They may have pulled a swifty yesterday on me, but I have a good feeling today, mate! My luck has just been running dry lately, mate. That's all, mate. You'll help me right, mate?",
       "reaction_perfect": ["Oi! I have a feeling that I just might win big today, mate!"],
@@ -42,6 +44,7 @@
     },
     {
       "name": "Sheriff",
+      "portraitName": "sherrifShaded",
       "intro": "Good day, sir. Mighty fine weather we're having, huh? Hmm... yes... It wasn't a wedding, for sure... Where have I seen a gentleman like you, pray tell?",
       "needs": "Anyways, the minnows are swimming about again! Give me the usual but a little stronger, would ya? Don't want to lose my job and become the town's laughing stock now, right buddy?",
       "reaction_perfect": ["That's my man! I'll see you around town then."],
@@ -62,6 +65,7 @@
     },
     {
       "name": "Gambler",
+      "portraitName": "prospectorShaded",
       "intro": "Oi mate! Some interesting shop you're running around here, mate. I'm about to head to the saloon soon, mate. You know, the place with the money, mate?",
       "needs": "Oi, don't know what you did yesterday, but somehow I managed to snag a few buckies, mate, so you know the deal!",
       "reaction_perfect": ["Oi! I have a feeling that I just might win big today, mate!"],
@@ -82,6 +86,7 @@
     },
     {
       "name": "Bounty Hunter",
+      "portraitName": "bountyhunterShaded",
       "intro": "Greetings. Can I ask you for a favor?",
       "needs": "I've been tracking this bandit for the past three weeks... Every time I think I've got him, he slips away.",
       "reaction_perfect": ["This is exactly what I needed- no escaping now! Thanks."],
@@ -102,6 +107,7 @@
     },
     {
       "name": "Cowboy",
+      "portraitName": "cowboyShaded",
       "intro": "Howdy, fella! How's business?",
       "needs": "I might need a little hand here. I've been ridin' for a while, and I still got a couple miles across that horrible desert to get to my next job. I heard there's this infamous group of bandits along the way, so I'm thinkin' I might need somethin' that's gonna keep me standin', if ya know what I mean.",
       "reaction_perfect": ["Thanks, brother. Best of luck with business!"],
@@ -122,6 +128,7 @@
     },
     {
       "name": "Bandit",
+      "portraitName": "banditShaded",
       "intro": "I swear I'm not a bandit!",
       "needs": "But someone's been on my tail, and I don't know how much longer I can stay ahead and hidden.",
       "reaction_perfect": ["Thanks! I'll keep you in my mind for my next heist."],
@@ -142,6 +149,7 @@
     },
     {
       "name": "Sheriff",
+      "portraitName": "sherrifShaded",
       "intro": "You... Did you used to be in Dainsville?",
       "needs": "Anyways, I need something a lot stronger than the last. Those little... And I swear I saw them laughing at me. The town's people, too. Where's my respect?",
       "reaction_perfect": ["Thanks."],
@@ -162,6 +170,7 @@
     },
     {
       "name": "Sick Townsperson",
+      "portraitName": "sickgirlShaded",
       "intro": "Hey there... The town gambler told my dad about you. You can help me, right?",
       "needs": "Please... Just make it go away... it hurts...",
       "reaction_perfect": ["It doesn’t hurt anymore! Thank you."],
@@ -182,6 +191,7 @@
     },
     {
       "name": "Eagle-eyed Annie",
+      "portraitName": "cowgirlShadedV2",
       "intro": "Howdy! You've seen a cowboy around this part with a buzz cut? Watch out for that sneaky fella- he's tryin' to take my job! If he's thinkin' that those desert bandits are the worst thang he's encounterin'... he doesn't know whose he messin' with.",
       "needs": "Before I can start chasin' that bugger, my horse just needs some fixin'. Can you believe it? She got herself bitten by a rattlesnake. But it's alrighty! You can fix it, and I'll be right back on that road!",
       "reaction_perfect": ["Thanky! She’s lookin’ all fresh and ready! It won’t be long until I catch up to him."],
