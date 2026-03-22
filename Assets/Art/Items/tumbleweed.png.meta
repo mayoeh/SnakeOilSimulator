@@ -1,19 +1,13 @@
 fileFormatVersion: 2
-guid: 1990390c462f9ee4898ee30bc94a175e
+guid: f8a7283f01990ff40a0973eee0bc0059
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -912498489993581376
-    second: Garlic_0
+      213: 8087236505176930743
+    second: tumbleweed_0
   - first:
-      213: 3356208544395961622
-    second: Garlic_1
-  - first:
-      213: 8672196899316348145
-    second: Garlic_2
-  - first:
-      213: -4270435203005716846
-    second: Garlic_3
+      213: -8859895111632999801
+    second: tumbleweed_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -122,13 +116,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Garlic_0
+      name: tumbleweedSquare
       rect:
         serializedVersion: 2
-        x: 569
-        y: 802
-        width: 349
-        height: 100
+        x: 1151
+        y: 701
+        width: 198
+        height: 198
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0cc2add35772653f0800000000000000
-      internalID: -912498489993581376
+      spriteID: 7b974a1e0c2ab3070800000000000000
+      internalID: 8087236505176930743
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garlic_1
+      name: tumbleweed2
       rect:
         serializedVersion: 2
-        x: 617
-        y: 802
-        width: 40
-        height: 33
+        x: 1144
+        y: 703
+        width: 425
+        height: 211
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -159,52 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6152ad0a3e5a39e20800000000000000
-      internalID: 3356208544395961622
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Garlic_2
-      rect:
-        serializedVersion: 2
-        x: 714
-        y: 798
-        width: 107
-        height: 103
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1f4bef5f125d95870800000000000000
-      internalID: 8672196899316348145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Garlic_3
-      rect:
-        serializedVersion: 2
-        x: 856
-        y: 798
-        width: 672
-        height: 289
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 29665800fcd5cb4c0800000000000000
-      internalID: -4270435203005716846
+      spriteID: 78a25e376545b0580800000000000000
+      internalID: -8859895111632999801
       vertices: []
       indices: 
       edges: []
@@ -213,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a162247ac943fdd418e5bb581727cd30
+    spriteID: cfa210b892b90a840902d941c101033f
     internalID: 0
     vertices: []
     indices: 
@@ -223,10 +173,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Garlic_0: -912498489993581376
-      Garlic_1: 3356208544395961622
-      Garlic_2: 8672196899316348145
-      Garlic_3: -4270435203005716846
+      tumbleweed2: -8859895111632999801
+      tumbleweedSquare: 8087236505176930743
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

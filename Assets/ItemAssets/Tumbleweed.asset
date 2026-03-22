@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Tumbleweed
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Tumbleweed
-  description: 
+  description: A classic western motif often associated with resilience, although
+    not often associated with being edible.
   price: 2
-  image: {fileID: 0}
+  image: {fileID: 8087236505176930743, guid: f8a7283f01990ff40a0973eee0bc0059, type: 3}
   healingVal: 0
   strengthVal: 0
   toxicityVal: 3

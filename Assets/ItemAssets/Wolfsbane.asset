@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Wolfsbane
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Wolfsbane
-  description: 
+  description: "A mythical herb used for protection against various animals and monsters.
+    Its effects on humans are still unknown\u2026"
   price: 17
-  image: {fileID: 0}
+  image: {fileID: -1310186372, guid: a25b328508b09d04a8bf47e39134f8c6, type: 3}
   healingVal: 0
   strengthVal: 5
   toxicityVal: 5

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a979c29226bd91f4e891a3c1043a91b2
+guid: a25b328508b09d04a8bf47e39134f8c6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7805253440506905384
-    second: moonshine_0
+      213: -8867596212579284894
+    second: Wolfsbane_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: moonshine_0
+      name: Wolfsbane_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 287
-        width: 271
-        height: 397
+        x: 799
+        y: 292
+        width: 162
+        height: 210
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8dcb0b0995b2ea390800000000000000
-      internalID: -7805253440506905384
+      spriteID: 268cc992a38ffe480800000000000000
+      internalID: -8867596212579284894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: wolfsbaneSqaure
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 291
+        width: 210
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50698c718afe8d4498c60f930d2d31fa
+      internalID: -1310186372
       vertices: []
       indices: 
       edges: []
@@ -138,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: f12e01c9fbd4925409a0168726c67c83
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      moonshine_0: -7805253440506905384
+      Wolfsbane_0: -8867596212579284894
+      wolfsbaneSqaure: -1310186372
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

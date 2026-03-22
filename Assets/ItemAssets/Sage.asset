@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Sage
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Sage
-  description: 
+  description: A sacred herb used for purification, rituals, and protection. It is
+    best known for burning but may have some other effects as well.
   price: 19
-  image: {fileID: 0}
+  image: {fileID: 1670527731, guid: 84bfa2976176d614c81d73fb7cef5093, type: 3}
   healingVal: 1
   strengthVal: 1
   toxicityVal: 2

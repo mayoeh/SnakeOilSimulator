@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Garlic Clove
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Garlic Clove
-  description: 
+  description: A pungent and unmistakable plant. Its bold nature can fortify a mixture,
+    though its effects are often unseen.
   price: 5
-  image: {fileID: 0}
+  image: {fileID: 8672196899316348145, guid: 1990390c462f9ee4898ee30bc94a175e, type: 3}
   healingVal: 1
   strengthVal: 1
   toxicityVal: 1

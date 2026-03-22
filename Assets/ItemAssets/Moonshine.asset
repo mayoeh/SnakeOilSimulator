@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Moonshine
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Moonshine
-  description: 
+  description: A strong homemade brew with a fiery kick. It emboldens the drinker
+    quickly, but its effects are rarely gentle or predictable.
   price: 21
-  image: {fileID: 0}
+  image: {fileID: -1031497430, guid: a979c29226bd91f4e891a3c1043a91b2, type: 3}
   healingVal: 3
   strengthVal: 4
   toxicityVal: 5

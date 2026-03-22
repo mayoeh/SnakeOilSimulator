@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Red Pepper
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Red Pepper
-  description: 
+  description: A sharp, vibrant spice that brings heat to any mixture. Favored for
+    adding a lively kick and a surprising twist of fortune.
   price: 9
-  image: {fileID: 0}
+  image: {fileID: 1922234930, guid: 0aeaf37be015ce64397e9873d2cc936b, type: 3}
   healingVal: 0
   strengthVal: 1
   toxicityVal: 2

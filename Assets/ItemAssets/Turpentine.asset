@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Turpentine
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Turpentine
-  description: 
+  description: A harsh, pine-scented solvent not meant for consumption. It brings
+    a sharp intensity to any mixture, but its effects are as dangerous as they are
+    potent.
   price: 13
-  image: {fileID: 0}
+  image: {fileID: -2821618280902010546, guid: 18387887634ae4c41837c2cc3c6c6c9d, type: 3}
   healingVal: 2
   strengthVal: 2
   toxicityVal: 5

@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Cactus Water
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Cactus Water
-  description: 
+  description: Drawn from desert plants that thrive where others fail. Known to restore
+    just enough to keep one going but often at a bitter cost.
   price: 11
-  image: {fileID: 0}
+  image: {fileID: -1887132989, guid: 3256d0828e8355346aa85eb0032f1ad2, type: 3}
   healingVal: 2
   strengthVal: 0
   toxicityVal: 2

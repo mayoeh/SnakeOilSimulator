@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Lizard Tail
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Lizard Tail
-  description: 
+  description: "Lost tail from a lizard - no lizards harmed. Seems like a remedy
+    used in eastern medicine\u2026"
   price: 15
-  image: {fileID: 0}
+  image: {fileID: -1872741190898870799, guid: 427bf3cb6da45e049800a21973c14cb5, type: 3}
   healingVal: 4
   strengthVal: 0
   toxicityVal: 1

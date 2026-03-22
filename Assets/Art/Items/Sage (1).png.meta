@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 18387887634ae4c41837c2cc3c6c6c9d
+guid: 84bfa2976176d614c81d73fb7cef5093
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2821618280902010546
-    second: turpentine_0
+      213: 7721739969681882339
+    second: Sage (1)_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,23 +113,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: turpentine_0
+      name: sage
       rect:
         serializedVersion: 2
-        x: 1385
-        y: 431
-        width: 124
-        height: 107
+        x: 1160
+        y: 588
+        width: 148
+        height: 80
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e4956138f1997d8d0800000000000000
-      internalID: -2821618280902010546
+      spriteID: 3ecf2d44791292b60800000000000000
+      internalID: 7721739969681882339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sageSquare
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 557
+        width: 148
+        height: 148
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac6d81bb9f59eeb459902c76194914db
+      internalID: 1670527731
       vertices: []
       indices: 
       edges: []
@@ -138,7 +160,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 90a0e68b9d011aa4ca2f8daf32184081
     internalID: 0
     vertices: []
     indices: 
@@ -148,7 +170,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      turpentine_0: -2821618280902010546
+      sage: 7721739969681882339
+      sageSquare: 1670527731
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

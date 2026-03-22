@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Petroleum
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemName: Petroleum
-  description: 
+  description: "A thick, glossy substance often used to bind mixtures together. While
+    not powerful on its own, it\u2019s valued for its reliable properties."
   price: 8
   image: {fileID: 0}
   healingVal: 1
