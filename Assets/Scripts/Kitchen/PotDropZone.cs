@@ -1,10 +1,36 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System.Collections;
+using Unity.VisualScripting;
 
 public class PotDropZone : MonoBehaviour, IDropHandler
 {
     public ItemData currentItem;
     public int totalIngredients;
+    public GameObject warning;
+    public float activeDuration = 3.0f;
+
+    void Awake()
+    {
+        warning.SetActive(false);
+    }
+
+    public void ActivateForDuration()
+    {
+        StartCoroutine(ToggleObjectRoutine());
+    }
+
+    private IEnumerator ToggleObjectRoutine()
+    {
+        warning.SetActive(true);
+
+        yield return new WaitForSeconds(activeDuration);
+
+        warning.SetActive(false);
+    }
+
+
     public void OnDrop(PointerEventData eventData)
     {
         if (totalIngredients <= 2)
@@ -27,6 +53,7 @@ public class PotDropZone : MonoBehaviour, IDropHandler
             }
         } else
         {
+            ActivateForDuration();
             Debug.Log("Tried to add more than 3 ingredients");
         }
         
