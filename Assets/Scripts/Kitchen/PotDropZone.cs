@@ -58,4 +58,10 @@ public class PotDropZone : MonoBehaviour, IDropHandler
         }
         
     }
+
+    public void ResetPot()
+    {
+        currentItem = null;
+        totalIngredients = 0;
+    }
 }

@@ -12,6 +12,7 @@ public class DialogueManager : MonoBehaviour
     private int resultLineIndex = 0;
     private string[] currentResultLines;
     private PlayerInputActions inputActions;
+    public bool recipeSubmitted = false;
 
     bool resultCoinsGiven = false;
 
@@ -22,20 +23,10 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
-        var state = GameManager.Instance.currentState;
+        Customer current = CustomerManager.Instance.currentCustomer;
 
-        if (state == GameState.Intro)
-        {
-            ShowIntro();
-        }
-        else if (state == GameState.Cooking || state == GameState.Needs) 
-        {
-            ShowNeeds();
-        }
-        else if (state == GameState.Result)
-        {
-            ShowResult();
-        }
+        // Always show intro first
+        ShowIntro();
     }
 
     void OnEnable()
@@ -57,22 +48,28 @@ public class DialogueManager : MonoBehaviour
 
     public void AdvanceDialogue()
     {
-        var customer = CustomerManager.Instance.currentCustomer;
+        Customer c = CustomerManager.Instance.currentCustomer;
 
-        switch(currentState)
+        switch (currentState)
         {
             case DialogueState.Intro:
-                dialogueText.text = customer.needs;
-                currentState = DialogueState.Needs;
+                ShowNeeds();
                 break;
 
             case DialogueState.Needs:
-            // Cannot show results immediately, must put some check here
-                ShowResult();
+                if (ResultData.Instance.recipeSubmitted)
+                {
+                    ShowResult();
+                }
+                else
+                {
+                    dialogueText.text = "You need to submit a recipe first!";
+                    // Stay in Needs state until submission
+                }
                 break;
 
             case DialogueState.Result:
-                if(resultLineIndex < currentResultLines.Length - 1)
+                if (resultLineIndex < currentResultLines.Length - 1)
                 {
                     resultLineIndex++;
                     dialogueText.text = currentResultLines[resultLineIndex];
@@ -80,6 +77,7 @@ public class DialogueManager : MonoBehaviour
                 else
                 {
                     CustomerManager.Instance.NextCustomer();
+                    ResetResultData();
                     ShowIntro();
                 }
                 break;
@@ -107,37 +105,46 @@ public class DialogueManager : MonoBehaviour
         var c = CustomerManager.Instance.currentCustomer;
         speakerText.text = c.name;
 
-        switch (ResultData.resultTier)
+        // Pick dialogue lines based on ResultData.resultTier
+        switch (ResultData.Instance.resultTier)
         {
             case RecipeResult.Perfect:
+                currentResultLines = c.reaction_perfect;
+                break;
             case RecipeResult.Great:
+                currentResultLines = c.reaction_great;
+                break;
+            case RecipeResult.Good:
                 currentResultLines = c.reaction_good;
                 break;
-
-            case RecipeResult.Good:
             case RecipeResult.Okay:
-                currentResultLines = new string[] { ResultData.dialogue };
+                currentResultLines = c.reaction_okay;
                 break;
-
             case RecipeResult.Bad:
                 currentResultLines = c.reaction_bad;
                 break;
-
             default:
                 currentResultLines = new string[] { "..." };
                 break;
         }
 
         resultLineIndex = 0;
-
         dialogueText.text = currentResultLines[resultLineIndex];
 
         if (!resultCoinsGiven)
         {
-            InventoryManager.Instance.AddCoins(ResultData.coinsEarned);
+            InventoryManager.Instance.AddCoins(ResultData.Instance.coinsEarned);
             resultCoinsGiven = true;
         }
-        currentState = DialogueState.Result;
 
+        currentState = DialogueState.Result;
+    }
+
+    private void ResetResultData()
+    {
+        if (ResultData.Instance != null)
+        {
+            ResultData.Instance.Reset(); // Calls Reset() in ResultData
+        }
     }
 }

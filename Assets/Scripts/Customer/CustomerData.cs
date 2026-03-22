@@ -4,7 +4,10 @@ public class Customer
     public string name;
     public string intro;
     public string needs;
+    public string[] reaction_perfect;
+    public string[] reaction_great;
     public string[] reaction_good;
+    public string[] reaction_okay;
     public string[] reaction_bad;
 
     public int healing_min;

@@ -38,8 +38,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("Customer");
     }
 
-    public void SubmitRecipe()
+    public void SubmitRecipe(RecipeResult tier, int coins)
     {
+        // Store the result in a persistent object
+        ResultData.Instance.recipeSubmitted = true;
+        ResultData.Instance.resultTier = tier;
+        ResultData.Instance.coinsEarned = coins;
+
         currentState = GameState.Result;
         SceneManager.LoadScene("Customer");
     }

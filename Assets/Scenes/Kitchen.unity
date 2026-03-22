@@ -773,6 +773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KitchenUI
   kitchenManager: {fileID: 939517737}
+  potZone: {fileID: 1445077880}
 --- !u!1 &309295589
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,12 +1428,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d25cd616366a54f4e8777c65d5495c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KitchenManager
-  score: 0
   currentCustomer:
     name: 
     intro: 
     needs: 
+    reaction_perfect: []
+    reaction_great: []
     reaction_good: []
+    reaction_okay: []
     reaction_bad: []
     healing_min: 0
     strength_min: 0
