@@ -17,6 +17,20 @@ public class KitchenManager : MonoBehaviour
 
     public void SubmitRecipe()
     {
+        // No Submission catch
+        if (playerIngredients == null || playerIngredients.Count == 0)
+        {
+            ResultData.Instance.feedback = "You didn't give anything...";
+            ResultData.Instance.lastScore = 0;
+            ResultData.Instance.resultTier = RecipeResult.Bad;
+            ResultData.Instance.coinsEarned = 0;
+            ResultData.Instance.lastResult = false;
+            ResultData.Instance.recipeSubmitted = true;
+
+            ResetStats();
+            SceneManager.LoadScene("Customer");
+            return;
+        }
         // Calculate score based on proximity to ideal
         float score = CalculateScore();
 
@@ -103,7 +117,7 @@ public class KitchenManager : MonoBehaviour
         if(GameManager.toxicity > currentCustomer.toxicity_max) penalty += 15;
         if(GameManager.intoxication > currentCustomer.intoxication_max) penalty += 15;
 
-        int coins = Mathf.RoundToInt(Mathf.Clamp(score - penalty, 1, 100));
+        int coins = Mathf.RoundToInt(Mathf.Clamp(score - penalty, 0, 100));
 
         coins = Mathf.RoundToInt(coins / 2f);
         return coins;
